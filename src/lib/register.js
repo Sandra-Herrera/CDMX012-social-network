@@ -1,4 +1,7 @@
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js"; //viene desde una CDN y no de lib
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js"; //viene desde una CDN y no de lib
 
 export const register = `
 <a onclick="onNavigate('/'); return
@@ -21,22 +24,23 @@ export const register = `
   </div>
 </div>`;
 
-function registerFireBase(e){
-    e.preventDefault(); 
-    const userMail = document.getElementById('mail').value;
-    const userName = document.getElementById('user').value;
-    const userPassword = document.getElementById('password').value;
-    const userArea = document.getElementById('area').value;
-    console.log(userMail, userName, userPassword, userArea);
+function registerFireBase(e) {
+  e.preventDefault();
+  const userMail = document.getElementById('mail').value;
+  const userName = document.getElementById('user').value;
+  const userPassword = document.getElementById('password').value;
+  const userArea = document.getElementById('area').value;
+  console.log(userMail, userName, userPassword, userArea);
 
-    const auth = getAuth(); //clave para au
-    createUserWithEmailAndPassword(auth, userMail, userPassword) // Crea el usuario
-      .then((userCredential) => { //una vez creado con Éxito, devuelve las credenciales del usuario
-        const user = userCredential.user; //trae info del usuario (nos podria servir para despues)
-        console.log('¡Registro Exitoso!');
-        alert ("registrado");
-        onNavigate('/login');
+  const auth = getAuth(); // clave para au
+  createUserWithEmailAndPassword(auth, userMail, userPassword) // Crea el usuario
+    .then((userCredential) => {
+      // una vez creado con Éxito, devuelve las credenciales del usuario
+      const user = userCredential.user; // trae info del usuario (nos podria servir para despues)
+      console.log('¡Registro Exitoso!');
+      alert('registrado');
+      onNavigate('/login');
     });
 }
 
-window.registerFireBase=registerFireBase;
+window.registerFireBase = registerFireBase;
