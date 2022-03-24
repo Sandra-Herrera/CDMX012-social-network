@@ -34,9 +34,7 @@ export const createUserRed = (email, password) => {
         alert('Tu contraseña debe contener al menos 6 carácteres.');
       }
       if (errorCode === 'auth/email-already-in-use') {
-        alert(
-          'Ya existe una cuenta con este correo, intenta con uno nuevo o Inicia Sesión'
-        );
+        alert('Ya existe una cuenta con este correo, intenta con uno nuevo o Inicia Sesión');
       }
     });
 };
@@ -56,9 +54,7 @@ export const signIn = (email, password) => {
     .catch((error) => {
       const errorCode = error.code;
       if (errorCode === 'auth/wrong-password') {
-        alert(
-          'Tu contraseña es incorrecta, intenta de nuevo o da click en "Olivde mi contraseña"'
-        );
+        alert('Tu contraseña es incorrecta, intenta de nuevo o da click en "Olivde mi contraseña"');
       }
       if (errorCode === 'auth/invalid-email') {
         alert('Por favor ingresa un correo válido');
