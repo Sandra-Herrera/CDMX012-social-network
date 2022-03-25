@@ -6,7 +6,7 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
-
+// eslint-disable-next-line import/no-unresolved
 } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 // viene desde una CDN y no de lib
 
@@ -62,7 +62,6 @@ export const signIn = (email, password) => {
     });
 };
 // función para hacer login con google login con google
-
 export const loginGoogle = () => {
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
@@ -87,6 +86,27 @@ export const loginGoogle = () => {
       // ...
     });
 };
+// export const loginGoogle = () => {
+//   const auth = getAuth();
+//   const provider = new GoogleAuthProvider();
+//   signInWithRedirect(auth, provider)
+//   // getRedirectResult(auth)
+//     .then((result) => {
+//       // This gives you a Google Access Token. You can use it to access Google APIs.
+//       const credential = GoogleAuthProvider.credentialFromResult(result);
+//       const token = credential.accessToken;
+//       // The signed-in user info.
+//       const user = result.user;
+//       console.log('funciona?');
+//     })
+//     .catch((error) => {
+//       const errorCode = error.code;
+//       const errorMessage = error.message;
+//       const email = error.email;
+//       const credential = GoogleAuthProvider.credentialFromError(error);
+//     });
+// };
+
 // LOGIN CON GITHUB
 // export const loginGithub = () => {
 //   const auth = getAuth();
