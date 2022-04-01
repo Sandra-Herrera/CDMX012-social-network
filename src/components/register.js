@@ -82,6 +82,8 @@ export const register = () => {
     const userArea = document.getElementById('area').value;
     console.log(userMail, userName, userPassword, userArea, user);
     createUserRed(userMail, userPassword);
+    console.log(createUserRed(userMail, userPassword));
+
     saveForm(userName, userArea, userMail);
   });
   return containerAllRegister;

@@ -1,6 +1,10 @@
 // eslint-disable-next-line import/no-cycle
-import { onNavigate } from '../main.js';
+// import { onNavigate } from '../main.js';
 import { readData, savePost } from './FireStore.js';
+// eslint-disable-next-line import/no-cycle
+import { modal } from './modal.js';
+// eslint-disable-next-line import/no-cycle
+import { signOutSession } from '../lib/firebase.js';
 
 export const feed = () => {
   const feedView = document.createElement('div');
@@ -41,6 +45,8 @@ export const feed = () => {
 
   const footer = document.createElement('div');
   footer.setAttribute('id', 'feedFooter');
+  const showModal = document.createElement('div');
+  showModal.setAttribute('id', 'showModal');
 
   const logOutFeed = document.createElement('img');
   logOutFeed.setAttribute('src', 'img/logOut.png');
@@ -58,6 +64,7 @@ export const feed = () => {
   feedView.appendChild(header);
   feedView.appendChild(postFeed);
   feedView.appendChild(footer);
+  feedView.append(showModal);
   postFeed.appendChild(writePost);
   postFeed.appendChild(readDiv);
   writePost.appendChild(createTop);
@@ -73,7 +80,10 @@ export const feed = () => {
 
   logOutFeed.addEventListener('click', (e) => {
     e.preventDefault();
-    onNavigate('/');
+    while (showModal.firstChild) {
+      showModal.removeChild(modal(signOutSession));
+    }
+    showModal.appendChild(modal(signOutSession));
   });
   sendPost.addEventListener('click', (e) => {
     e.preventDefault();

@@ -6,8 +6,9 @@ import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
+  signOut,
 // eslint-disable-next-line import/no-unresolved
-} from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
+} from './firebaseFunctions.js';
 // viene desde una CDN y no de lib
 
 // eslint-disable-next-line import/no-cycle
@@ -86,6 +87,16 @@ export const loginGoogle = () => {
       // ...
     });
 };
+
+export const signOutSession = () => {
+  const auth = getAuth();
+  signOut(auth).then(() => {
+    onNavigate('/');
+  }).catch((error) => {
+    console.log(error.message);
+  });
+};
+
 // export const loginGoogle = () => {
 //   const auth = getAuth();
 //   const provider = new GoogleAuthProvider();
