@@ -67,8 +67,12 @@ export function renderPost(doc) {
   sendComment.textContent = 'Enviar';
   sendComment.setAttribute('class', 'button');
 
+  const sendButtonBox = document.createElement('div');
+  const showModal = document.createElement('div');
+  showModal.setAttribute('class', 'showModal');
+
   templateTop.append(profilePic, profileName, deletePostButton, edit);
-  likeComment.append(postDate, likes, likeIcon, commentIcon);
+  likeComment.append(sendButtonBox, postDate, likes, likeIcon, commentIcon);
   sectionPost.append(templateTop, pPost, likeComment);
 
   commentIcon.addEventListener('click', (e) => {
@@ -122,7 +126,10 @@ export function renderPost(doc) {
   };
 
   deletePostButton.addEventListener('click', () => {
-    sectionPost.append(modal());
+    while (showModal.firstChild) {
+      showModal.removeChild(showModal.firstChild);
+    }
+    showModal.append(modal());
   });
   edit.addEventListener('click', () => {
     pPost.contentEditable = 'true';
@@ -130,7 +137,10 @@ export function renderPost(doc) {
     editPostButton.setAttribute('class', 'button');
     editPostButton.setAttribute('id', 'editPostButton');
     editPostButton.textContent = 'enviar';
-    templateTop.append(editPostButton);
+    while (sendButtonBox.firstChild) {
+      sendButtonBox.removeChild(sendButtonBox.firstChild);
+    }
+    sendButtonBox.append(editPostButton);
     editPostButton.addEventListener('click', () => {
       const editedInput = pPost.innerText;
       // toma el nuevo texto para enviarlo - console.log(editedInput);

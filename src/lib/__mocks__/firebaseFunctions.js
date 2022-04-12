@@ -10,7 +10,7 @@ const getAuth = () => ({});
 const signOut = (auth) => Promise.resolve({});
 const collection = (db, newPost) => Promise.resolve({});
 const orderBy = (date, desc) => Promise.resolve({});
-const doc = (db, collections) => ({});
+const doc = (db, collections, id) => ({});
 // ,
 // signInWithEmailAndPassword,
 // GoogleAuthProvider,
