@@ -1,5 +1,5 @@
 # Creando una Red Social
-
+Visita nuestra red social [.Comt](https://sandra-herrera.github.io/CDMX012-social-network/src/index.html)
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
